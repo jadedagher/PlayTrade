@@ -1,0 +1,95 @@
+<div class="plafond">
+</div>
+
+
+	
+<!-- REGISTRATION -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-6 col-md-offset-3">
+				
+				<form class="myForm" action="/user/create" method="POST"> 
+
+					<h1 class="text_title H1_Login_costud">Create an Account</h1>
+
+					<br /><br />
+
+
+					<!-- //////////////////////////////////////////////////////////////////////////// -->
+					<% if(flash && flash.err){ %>
+						<ul class="alert">
+						<% Object.keys(flash.err).forEach(function(error){ %>
+							<li><%- JSON.stringify(flash.err[error]) %></li>
+						<% }) %>
+						</ul>
+					<% } %>
+					<!-- //////////////////////////////////////////////////////////////////////////// -->
+					
+						
+					<label class="form_col"></label>
+					<input class="input_form_signUp" name="firstname" placeholder="Your name" type="text" />
+					
+					<br /><br />
+					
+					
+					<label class="form_col"></label>
+					<input class="input_form_signUp" name="lastname" placeholder="Your last name" type="text" />
+					<br /><br />
+						
+					
+					<label class="form_col"></label>
+					<input class="input_form_signUp" name="pseudo" placeholder="Pseudo" type="text" />
+					<br /><br />
+
+					<label class="form_col"></label>
+					<input class="input_form_signUp" name="email" placeholder="Your email" type="email" />
+					<br /><br />
+					
+					<label class="form_col"></label>
+					<input class="input_form_signUp" name="password" id="password" placeholder="Password"  type="password" />
+					
+					<br /><br />
+					
+					<label class="form_col"></label>
+					<input class="input_form_signUp" name="confirmation" placeholder="Password (confirmation)" type="password" />
+					<br /><br />
+
+					<span class="form_col"></span>
+					<input class="button2_create_account" id="addUser" type="submit" value="Create Account!" /> <!-- <input type="reset" value="Reset the Form" /> -->
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+					<br /><br />
+
+				</form>
+			
+		</div>
+	</div><!-- row -->
+</div><!-- container -->
+
+<style>
+	
+	.alert{
+		background-color:#0073FF ;
+	}
+	body{
+		background-color: #F0F0F0;
+	}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

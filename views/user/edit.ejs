@@ -1,0 +1,69 @@
+<div class="plafond">
+</div>
+
+
+
+<!-- REGISTRATION -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-6 col-md-offset-3">
+				
+				<form class="myForm" action="/user/update/<%=user.id %>" method="POST"> 
+
+					<h1 class="text_title H1_Login_costud">Edit your Account</h1>
+
+					<br /><br />
+						
+					<label class="form_col"></label>
+					<input value="<%= user.firstname %>" name="firstname" type="text" class="input_form_signUp">
+					
+					<br /><br />
+					
+					
+					<label class="form_col"></label>
+					<input value="<%= user.lastname %>" name="lastname" type="text" class="input_form_signUp">
+
+					<br /><br />
+						
+					
+					<label class="form_col"></label>
+					<input value="<%= user.pseudo %>" name="pseudo" type="text" class="input_form_signUp">
+					<br /><br />
+
+					<label class="form_col"></label>
+					<input value="<%= user.email %>" name="email" type="email" class="input_form_signUp">
+					<br /><br />	
+					
+					
+						<% if(session.authenticated && session.User.admin) { %>
+							<% if(user.admin) { %>
+								<!-- <input type="hidden" name="admin" value="unchecked"> --> <!-- ne sert a rien -->
+								<label class="checkbox"><input type="checkbox" name="admin" checked> Admin </label>
+
+							<% } else { %>
+								<!-- <input type="hidden" name="admin" value="unchecked"> --> <!-- ne sert a rien -->
+								<label class="checkbox"><input type="checkbox" name="admin"> Admin </label>
+							<% } %>
+						<% } %>
+
+
+					<span class="form_col"></span>
+					<input class="button2_create_account" id="addUser" type="submit" value="Proceed" /> <!-- <input type="reset" value="Reset the Form" /> -->
+					<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+					<br /><br />
+
+				</form>
+			
+		</div>
+	</div><!-- row -->
+</div><!-- container -->
+
+
+
+<style>
+	
+	body{
+		background-color: #F0F0F0;
+	}
+	
+</style>

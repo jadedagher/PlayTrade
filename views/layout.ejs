@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<html lang="en" class="no-js">
+  <head>
+    <title>PlayTrade</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/animate.css">
+    <link rel="stylesheet" href="/styles/bootstrap-select.css">
+    <link rel="stylesheet" href="/styles/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/card.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <!--STYLES END-->
+
+
+  </head>
+
+
+
+  <body>
+
+
+
+    <%- body %>
+
+  <div class="navbar navbar-default navbar-fixed-top background">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <img class="corner_logo" src="/images/logo_corner_left.png">
+        <a class="navbar-brand" href="/">PlayTrade</a>
+
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="navbar-nav">
+
+          <% if(session.authenticated) {%>
+            <input class="btn mtop navBtn" type="button" value="<%= session.User.firstname%> <%= session.User.lastname%>"
+            onclick="self.location.href='/user/profil/<%= session.User.id %>'">
+            <input class="btn mtop navBtn" type="button" value="Home" onclick="self.location.href='/user/lahome/<%= session.User.id %>'">
+            <input class="btn mtop navBtn" type="button" value="Transaction Panel" onclick="self.location.href='/user/transaction_panel/<%= session.User.id %>'">
+            <input class="btn mtop navBtn" type="button" value="UserRank" onclick="self.location.href='/user/UserRank/<%= session.User.id %>'">
+          <input class="btn mtop navBtn" type="button" value="Group Rank" onclick="self.location.href='/user/GroupRank/<%= session.User.id %>'">
+          <!--//group-->
+            <% if(req.session.User.team != 'NoTeam' ){ %>
+            <input class="btn mtop navBtn" type="button" value="My group" onclick="self.location.href='/user/Uteam/<%= session.User.id %>'">
+            <% } else if(req.session.User.team == 'NoTeam') { %>
+            <input class="btn mtop navBtn" type="button" value="Groups" onclick="self.location.href='/user/Group/<%= session.User.id %>'">
+            <% } %>
+
+
+          <%}%>
+
+        </ul>
+        <div class="navbar-right">
+
+          <% if(session.authenticated && session.User.admin) {%>
+
+           <input class="btn mtop navBtn" type="button" value="User Administration" onclick="self.location.href='/user'">
+
+          <%}%>
+
+          <% if(session.authenticated) {%>
+
+          <input class="btn mtop navBtn" type="button" value="Sign-out" onclick="self.location.href='/session/destroy'">
+          <%}%>
+
+        </div>
+
+          <% if(!session.authenticated){ %>
+
+            <form class="navbar-form navbar-right" action="/session/create">
+              <div class="form-group">
+                <input type="text" placeholder="Pseudo" name="pseudo" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="password" placeholder="Password" name="password" class="form-control">
+              </div>
+              <button type="submit" class="btn navBtn" >Sign in</button>
+              <input type="hidden" name="blop" value="<%= _csrf %>"/>
+              <input class="btn navBtn" type="button" value="Sign up it's free" onclick="self.location.href='/user/registration'">
+            </form>
+
+          <%}%>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+    <footer>
+      <br />
+      <p style="text-align: center;">© 2016 - Jade Dagher & Jean Baptiste Torjman & Mathieu Compagnon</p>
+    </footer>
+
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/YAHOO_query.js"></script>
+    <script src="/js/bootstrap-select.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/btn_transaction.js"></script>
+    <script src="/js/customValidate.js"></script>
+    <script src="/js/historic_chart.js"></script>
+    <script src="/js/jquery-1.12.3.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
+    <script src="/js/obselete-login.js"></script>
+    <script src="/js/test.js"></script>
+    <!--SCRIPTS END-->
+
+
+  </body>
+</html>

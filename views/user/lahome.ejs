@@ -1,0 +1,240 @@
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="plafond">
+</div>
+
+
+<!-- _________________________buy_________________________ -->
+
+<div class="container">
+    <div>
+        <h1 style="text-align: center"><strong>Make a Transaction</strong></h1>
+    </div>
+</div>
+
+<div class="container">
+  <div  class="row">
+
+    <div style="text-align: center">
+
+      <form class="form-inline" action="/transaction/buy" method= "POST">
+
+          <div class="form-group">
+              <select id="lunch" name="ticker" class="selectpicker" data-live-search="true" title="Please select your Ticker ..." required>
+                  <option>YHOO</option>
+                  <option>AAPL</option>
+                  <option>GOOG</option>
+                  <option>MSFT</option>
+                  <option>XOM</option>
+                  <option>GE</option>
+                  <option>AMZN</option>
+                  <option>AKH</option>
+                  <option>FTE</option>
+                  <option>MOT</option>
+                  <option>HMC</option>
+                  <option>WMT</option>
+
+
+
+              </select>
+          </div>
+
+        <div class="form-group">
+
+          <label class="sr-only" for="exampleInputAmount"></label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">Buy stock</div>
+            <input type="number" class="form-control" min="0" value="10" name="volume" id="exampleInputAmount1" placeholder="Volume" required>
+            <div class="input-group-addon"><p id="LastTradePriceOnlyToCall"></p></div>
+
+          </div>
+        </div>
+
+        <input type="submit" class="btn btn-success" id="call" value="Buy" onclick="self.location.href='/user/transaction_panel/<%= session.User.id %>'"></input>
+
+
+      </form>
+
+        <br></br>
+        <hr>
+        <br></br>
+
+
+    </div>
+  </div>
+</div>
+
+
+<!-- _________________________data view_________________________ -->
+
+<!-- _________________________title_________________________ -->
+
+<div class="container">
+    <div>
+        <h1 style="text-align: center">Quick Data Visualization</h1>
+        <p style="text-align: center" id="time"></p>
+    </div>
+</div>
+
+
+<div style="width: 450px"class="container">
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item wallet">
+                <span class="badge"><%= user.wallet %> $</span>
+                Wallet
+
+                <% if(user.wallet < 0){ %>
+                <style>
+                    .wallet{
+                        background-color: orangered;
+                    }
+                </style>
+                <% } %>
+                <% if(user.wallet > 10000){ %>
+                <style>
+                    .wallet{
+                        background-color: greenyellow;
+                    }
+                </style>
+                <% } %>
+
+            </li>
+            <!-- <li class="list-group-item">
+                <span class="badge">14</span>
+                Number of stock
+            </li>
+            <li class="list-group-item">
+                <span class="badge">1</span>
+                Rank
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+</br>
+
+<div class="container">
+    <div>
+        <h3 style="text-align: center"><strong>You can change the ticker of the live graph</strong></h3>
+        <p id="time"></p>
+    </div>
+</div>
+
+</br></br>
+<!-- _________________________chart trading view_________________________ -->
+
+<div class="container">
+  <div class="row">
+    <div id="trading view" class="col-md-offset-1 col-md-10 col-md-offset-1">
+      <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+      <script type="text/javascript">
+        new TradingView.widget({
+          "width": 975,
+          "height": 610,
+          "symbol": "NASDAQ:YHOO",
+          "interval": "D",
+          "timezone": "Etc/UTC",
+          "theme": "White",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "rgba(255, 255, 255, 1)",
+          "allow_symbol_change": true,
+          "hideideas": true,
+          "show_popup_button": false,
+          "popup_width": "1000",
+          "popup_height": "650"
+        });
+      </script>
+
+    </div>
+
+    <div class="col-md-offset-2 col-md-10 col-md-offset-2">
+      <div id="tv-miniwidget-dec48"></div>
+    </div>
+
+
+  </div><!-- row -->
+</div><!-- container -->
+
+</br>
+</br>
+
+<br></br>
+<hr>
+<br></br>
+
+<!-- _________________________chart_________________________ -->
+
+<div class="container">
+  <div >
+    <h1 style="text-align: center" ><strong>Historic chart</strong></h1>
+
+  </div>
+</div>
+
+<!-- _________________________btn_________________________ -->
+<div class="container">
+  <div class="row">
+    <div style="text-align: center">
+
+      <button type="button" class="btn btn-info" onclick="buttonPressed('year')">1 year</button>
+
+      <button type="button" class="btn btn-info" onclick="buttonPressed('halfyear')">6 months</button>
+
+      <button type="button" class="btn btn-info" onclick="buttonPressed('thisMonth')">1 month</button>
+
+      <button type="button" class="btn btn-info" onclick="buttonPressed('thisWeek')">1 week</button>
+
+      <button type="button" class="btn btn-warning" onclick="reloadPage()">Refresh data</button>
+
+
+    </div>
+  </div>
+</div>
+<!-- _________________________historic_chart_________________________ -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" id="historic_chart_div" style="width: 1200px; height: 800px"></div>
+  </div>
+</div>
+
+
+
+
+
+<!-- _________________________stock informations_________________________ -->
+<!--<div class="container">-->
+  <!--<div class="row">-->
+    <!--<div class="col-md-offset-3 col-md-6 col-md-offset-3">-->
+      <!--<h2 id="Name"></h2>-->
+        <!--<blockquote>-->
+          <!--<ul>-->
+            <!--<li><h2 style="color: green;"id="Change"></h2></li>-->
+            <!--<li><h2 style="color: green;"id="LastTradePriceOnly"></h2></li>-->
+            <!--<li><h2 id="DaysHigh"></h2></li>-->
+            <!--<li><h2 id="DaysLow"></h2></li>-->
+            <!--<li><h2 id="MarketCapitalization"></h2></li>-->
+          <!--</ul>-->
+        <!--</blockquote>-->
+      <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<body>
+
+
+
+

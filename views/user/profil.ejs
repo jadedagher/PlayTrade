@@ -1,0 +1,100 @@
+<div class="plafond">
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-3 col-md-6 col-md-offset-3">
+
+			<div class="ProfilInformation">
+				<h1>Your informations</h1>
+
+				<br></br>
+				<hr>
+        <br></br>
+
+
+				<!--AWARD-->
+				<% if(user.wallet < 0){ %>
+				<h2><strong>You are a poop Trader!!!</strong></h2></br>
+				<td><img src="/images/admin/death.png"></td>
+				<% } else if(user.wallet == 10000){ %>
+
+				<h2><strong>You just create your account!</br>Let's play</strong></h2></br>
+				<td><img src="/images/award/badge.png"></td>
+				<% } else if(user.wallet > 10000){ %>
+
+				<h2><strong>First profit!!! You can do more</strong></h2></br>
+				<td><img src="/images/award/medal.png"></td>
+				<% } else if(user.wallet >= 50000){%>
+
+				<h2><strong>You are a Senior Trader</strong></h2></br>
+				<td><img src="/images/award/world-cup.png"></td>
+				<% } if(user.wallet >= 100000){ %>
+
+				<h2><strong>You are a Confirmed Trader</strong></h2></br>
+				<td><img src="/images/award/3.png"></td>
+				<% } else if(user.wallet >= 250000){%>
+
+				<h2><strong>You are a Ultime Trader!!!</strong></h2></br>
+				<td><img src="/images/award/medal2.jpg"></td>
+				<% } else if(user.wallet > 500000){%>
+
+				<h2><strong>You are Jérôme Kerviel!!!</strong></h2></br>
+				<td><img src="/images/award/trophy.png"></td>
+				<% } else {%>
+
+				<% } %>
+				<!--AWARD-->
+
+
+
+				<h1><%= user.firstname %></h1>
+				<h3><%= user.lastname  %></h3>
+				<h3>Pseudo:   <%= user.pseudo  %></h3>
+        <h3>Wallet: <%= user.wallet %> $</h3>
+
+
+
+				<h3>Contact: <%= user.email %> </h3>
+
+				<% if(user.team != "NoTeam"){ %>
+				<h3>Team:   <%= user.team  %></h3>
+				<% } %>
+				</br>
+				<a class="btn btn-medium btn-default" href="/user/award/<%= user.id %>">Check the different awards !!!</a>
+
+				<br></br>
+				<hr>
+
+				<br></br>
+
+				<% if(user.admin){ %>
+					<td><img src="/images/admin/admin.png"><strong>    Administrator</strong></td>
+				<% } %>
+
+				<h4>You can edit your informations at any time</h4>
+				<a class="btn btn-medium btn-primary" href="/user/edit/<%= user.id %>">Edit your informations now!</a>
+
+			</div>
+		</div>
+	</div>
+
+
+
+<style>
+
+	hr {
+	  height: 2px;
+	  margin: -0.5em 0;
+	  background-color: black;
+
+	}
+
+	.ProfilInformation{
+		text-align: center;
+	}
+
+
+</style>
+

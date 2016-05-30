@@ -1,0 +1,124 @@
+<div class="plafond">
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- _________________________transaction Panel_________________________ -->
+
+
+<div class="container">
+  <div class="row">
+      <div class="transaction">
+        <h3>Transaction BUY</h3>
+
+
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-2 col-md-8 col-md-2">
+                      <div class="dropdown">
+                          <button  class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Sort the table by ...
+                              <span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                              <li class="dropdown-header">Action:</li>
+                              <li><a href="#">High Profit</a></li>
+                              <li><a href="#">Low Profit</a></li>
+                              <li><a href="#">High Price</a></li>
+                              <li><a href="#">Low Price</a></li>
+                              <li><a href="#">High Volume</a></li>
+                              <li><a href="#">Low Volume</a></li>
+
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="col-md-2 col-md-8 col-md-2">
+                      <div class="form-group">
+                          <input style="width: 200%;" type="text" placeholder="Search Transaction" name="Search" class="form-control">
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+          </br>
+
+
+        <table class = 'table'>
+          <tr>
+
+            <th>Type</th>
+            <th>Pseudo</th>
+            <th>Date</th>
+            <th>Symbol</th>
+            <th>Volume</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Profit</th>
+            <th>Loss</th>
+            <th>Actions</th>
+          </tr>
+
+
+          <%_.each(transactionsBUY, function(transactionBUY){	%>
+
+          <tr data-id="<% transactionBUY.id %>" data-model="transactionBUY">
+            <td><%= transactionBUY.type%></td>
+            <td><%= transactionBUY.authorId %></td>
+            <td><%= transactionBUY.date %></td>
+            <td><%= transactionBUY.symbol %></td>
+            <td><%= transactionBUY.volume %></td>
+            <td><%= transactionBUY.price +"$" %></td>
+            <td><%= transactionBUY.total %></td>
+            <td style="color:green;"><%= transactionBUY.profit %></td>
+            <td style="color:red;"><%= transactionBUY.perte %></td>
+
+
+              <% if(req.session.User.pseudo == transactionBUY.authorId ){ %>
+
+                  <% if( transactionBUY.type != "Sell"){ %>
+                      <td>
+                          <form action="/transaction/sell/<%= transactionBUY.id %>" method= "POST">
+                              <input type="hidden" name="_method" value="delete"/>
+                              <button  style="width:90px" type="submit" class="btn btn-danger" value="Sell" />Sell Now</button>
+                              <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+                              
+                          </form>
+                      </td>
+                  <% }else{ %>
+                        <td>
+
+                            <div class="dropdown">
+                                <button style="width:90px" class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Sold
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-header">Action:</li>
+                                    <li><a href="#">Delete the Transaction</a></li>
+
+                                </ul>
+                            </div>
+
+                        </td>
+                  <%}%>
+
+              <% }else{ %>
+              <td>
+                  <button style="width:90px" class="btn btn-warning" type="button" value="Not yours"/>Not yours</button>
+
+              </td>
+
+              <%}%>
+
+              <% }) %>
+
+          </tr>
+
+        </table>
+        <hr>
+      </div>
+  </div>
+</div>
+
+
+
+

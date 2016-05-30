@@ -1,0 +1,215 @@
+
+	#viewer {
+ 	 	height: 100%;
+  		width: 100%;
+	}
+
+
+	.plafond{
+		height: 70px;
+	}
+
+	/*pour les boutons de la navbar dans le layout*/
+	.mtop{
+		margin-top: 6px;
+	}
+
+	.plafond_pdf_page{ /*utiliser aussi pour l'index*/
+		height: 50px;
+	}
+
+	.plafond_pdf_comments{
+		height: 10px;
+	}
+
+	form.downloadPDF{
+		text-align: center;
+	}
+
+
+	form.comments{
+		float:right;
+		margin-right: -44px;
+	}
+
+
+	.LinkToRegistration{
+		color: red;
+	}
+
+	.logocostud{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+
+	}
+
+	.corner_logo{
+		margin-top:5px;
+		float: left;
+		margin-right: 15px;
+		border-radius: 5px 5px
+	}
+
+	.text_title{
+		text-align: center;
+		color: black;
+	}
+
+
+	.text{
+		position: center;
+	}
+
+
+
+	.H1_Login_costud{
+		background-color: #0073FF;
+		padding: 20px 20px;
+		margin: 0px 0px;
+		text-align:center;
+		border-radius: 23px 23px 0 0;
+
+	}
+
+	.button2Log{
+		font-size: 16px;
+		background-color: #0073FF;
+		border: 1px solid grey;
+		font-weight: bold;
+		cursor: pointer;
+		width: 50%;
+		border-radius: 5px;
+		padding: 10px 0;
+	}
+
+	.input_form{
+		width: 50%;
+		height: 40px;
+		padding: 5px;
+		margin-bottom: 25px;
+		margin-top: 5px;
+		border: 2px solid #ccc;
+		color: #4f4f4f;
+		font-size: 16px;
+		border-radius: 5px;
+	}
+
+
+
+	.container_login{
+
+		border: 2px solid grey;
+   		border-radius: 25px;
+   		text-align: center;
+   		width: 400px;
+   		background-color: white;
+
+	}
+
+	.container_home{
+		background-color: #F0F0F0;
+		border-radius: 10px;
+		border: 1px solid grey;
+	}
+
+
+
+	.library{
+
+		border-radius: 10px;
+	}
+
+	.navbar{
+    	height: 40px;
+    	background-color: grey;
+	}
+
+	/*.btn{*/
+		/**/
+		/*background-color: #0073FF;*/
+		/*border: 1px solid grey;*/
+	/*}*/
+
+  .navBtn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 1px solid grey;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+  }
+
+
+	.btn_SigninHelloPage{
+		margin-top: 10px;
+		margin-left: 55px;
+		height: 33px;
+		background-color: #0073FF;
+		border: 2px solid grey;
+		border-radius: 4px;
+
+	}
+	.btn_SignupHelloPage{
+		height: 33px;
+		background-color: #0073FF;
+		border: 2px solid grey;
+		border-radius: 4px;
+	}
+
+	.pdf{
+		width:775px;
+		height:900px;
+		border:1px solid #000;
+		float:left;
+	}
+
+	.container_comments{
+		float: right;
+	}
+
+
+
+	/*///REGISTRATION////*/
+
+	form.myForm{
+		border: 2px solid grey;
+   		border-radius: 25px;
+   		background-color: white;
+	}
+
+	.form_col {
+		display: inline-block;
+		padding: 3px 0px;
+		width: 130px;
+		min-height: 1px;
+		text-align: right;
+	}
+
+	.button2_create_account{
+		font-size: 16px;
+		background-color: #0073FF;
+		border: 1px solid grey;
+		font-weight: bold;
+		cursor: pointer;
+		width: 50%;
+		border-radius: 5px;
+		padding: 10px 0;
+	}
+
+	.input_form_signUp{
+		width: 50%;
+		height: 40px;
+		padding: 5px;
+		margin-bottom: 7px;
+		margin-top: -15px;
+		border: 2px solid #ccc;
+		color: #4f4f4f;
+		font-size: 16px;
+		border-radius: 5px;
+	}
+
+
+	/*///REGISTRATION////*/
+
+

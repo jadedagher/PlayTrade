@@ -1,0 +1,32 @@
+<div class="plafond">
+</div>
+
+<!-- _________________________ranking Panel_________________________ -->
+
+<div class="container">
+  <div class="row">
+    <div class="UserRanking">
+      <h3>Ranking</h3>
+      <table class = 'table'>
+        <tr>
+
+          <th>pseudo</th>
+          <th>wallet</th>
+          <th>Team</th>
+        </tr>
+
+
+        <%_.each(UserRanking, function(UserRanking){	%>
+        <tr data-id="<% UserRanking.id %>" data-model="UserRanking">
+          <td><%= UserRanking.pseudo%></td>
+          <td><%= UserRanking.wallet +' $'%></td>
+          <td><%= UserRanking.team%></td>
+        </tr>
+        <% }) %>
+
+      </table>
+      <hr>
+    </div>
+  </div>
+</div>
+
