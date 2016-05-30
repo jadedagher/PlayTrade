@@ -65,7 +65,7 @@ module.exports.connections = {
     // // user: 'username',
     // // password: 'password',
     // database: 'PlayTrade_App'
-    url:"mongodb://jade:1234@ds057954.mlab.com:57954/heroku_zqbq8dlp"
+    url:"mongodb://admin:1234@ds057954.mlab.com:57954/playtradedatabase"
   },
 
   /***************************************************************************
