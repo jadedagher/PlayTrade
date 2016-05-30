@@ -60,11 +60,12 @@ module.exports.connections = {
   ***************************************************************************/
   mongodb: {
     adapter: 'sails-mongo',
-    host: 'localhost',
-    port: 27017,
-    // user: 'username',
-    // password: 'password',
-    database: 'PlayTrade_App'
+    // host: 'localhost',
+    // port: 27017,
+    // // user: 'username',
+    // // password: 'password',
+    // database: 'PlayTrade_App'
+    url:"mongodb://jade:1234@ds057954.mlab.com:57954/heroku_zqbq8dlp"
   },
 
   /***************************************************************************
